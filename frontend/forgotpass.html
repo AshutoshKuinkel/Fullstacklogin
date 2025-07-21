@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Forgot password page</title>
+</head>
+<body>
+  <h2 id="display-text"></h2>
+  <div class="card">
+    <div class="card-content">
+      <h3>Enter your email to reset password:</h3>
+      <form onsubmit="forgotPassFunc(event)">
+        <input type="text" id="email" name="email" placeholder="Email"><br><br>
+        <input type="submit" value="Send Reset Link" class="reset-link">
+      </form>
+    </div>
+  </div>
+  <script src="js/forgotpass.js"></script>
+</body>
+</html>

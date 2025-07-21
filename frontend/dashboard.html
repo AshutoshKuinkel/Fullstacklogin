@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="welcome-message"></h1>
+    <script>
+    //Read user info from localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      //Use the 'name' field from your schema
+      document.getElementById('welcome-message').textContent = `Welcome, ${user.name}!`;
+      document.getElementById('welcome-message').style.color = 'white'
+      document.getElementById('welcome-message').style.fontSize = '5rem'
+    } else {
+      document.getElementById('welcome-message').textContent = "Unauthorized. Please login.";
+      window.location.href = '/index.html'; // redirecting to the login
+    }
+  </script>
+</body>
+</html>

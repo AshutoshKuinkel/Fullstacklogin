@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Login page</title>
+</head>
+<body>
+  <h2 id="display-text"></h2>
+  <div class="card">
+    <div class="card-content">
+      <h1>Login</h1>
+      <form onsubmit="loginFunc(event)">
+        <input type="text" id="email" name="email" placeholder="Email"><br><br>
+        <input type="password" id="password" name="password" placeholder="Password"  autocomplete="off">
+        <p class="forgot-pass"><a href="forgotpass.html" >Forgot password?</a></p>
+        <input type="submit" value="Login" class="login">
+        <p>Don't have an account? <a href="signup.html">Signup</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="js/login.js"></script>
+</body>
+</html>

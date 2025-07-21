@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Signup page</title>
+</head>
+<body>
+  <h2 id="display-text"></h2>
+  <div class="card">
+    <div class="card-content">
+      <h1>Signup</h1>
+      <form onsubmit="signupFunc(event)" autocomplete="off">
+        <input type="text" id="email" name="email" placeholder="Enter your Email"><br><br>
+        <input type="password" id="password" name="password" placeholder="Enter a Password"><br><br>
+        <input type="text" id="phone" name="phone" placeholder="Enter Phone No."><br><br>
+        <input type="text" id="name" name="name" placeholder="Enter Your Name"><br><br>
+        <input type="submit" value="Signup" class="signup">
+      </form>
+    </div>
+  </div>
+  <script src="js/signup.js"></script>
+</body>
+</html>
