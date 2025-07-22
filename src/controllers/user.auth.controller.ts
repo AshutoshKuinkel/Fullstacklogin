@@ -1,3 +1,4 @@
+import { IJWTPayload } from './../types/global.types';
 import User from "../models/user.model";
 import dotenv from 'dotenv';
 dotenv.config();
@@ -5,6 +6,7 @@ import CustomError from "../middlewares/errorhandlermiddleware";
 import { Request,Response,NextFunction } from "express";
 import nodemailer from "nodemailer";
 import { comparePassword, hashPassword } from "../utils/bcrypt.utils";
+import { generateToken } from '../utils/jwt.utils';
 
 
 //register user
@@ -76,13 +78,26 @@ try{
     throw new CustomError("Invalid Credentials",404)
   }
 
+  const payload:IJWTPayload = {
+    _id: user._id,
+    email: user.email,
+    name: user.name
+  }
+
+  //generating jwt token:
+  const access_token = generateToken(payload)
+
  const {password:_,...withoutPassObj} = user.toObject()
 
   if(user && isPassMatch){
-    res.status(200).json({
+    res.cookie('access_token',access_token,{
+      secure:process.env.NODE_ENV === 'development' ? false:true,
+      httpOnly:true,
+      maxAge: Number(process.env.COOKIE_EXPIRY) * 24 * 60 * 60 * 60 * 1000})
+    .status(200).json({
     message: `Successfully logged in`,
     success: true,
-    data:withoutPassObj
+    data:withoutPassObj,access_token
     })
   }
 }catch(err){
